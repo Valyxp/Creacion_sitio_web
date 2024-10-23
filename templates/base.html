@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Bienvenido a OnlyFlans{% endblock %}</title>
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="container" style="background: #a8f5d7">header</div>
-    <div class="container" style="background: #fcff8f">navbar</div>
-    <div class="container">{% block content %}{% endblock %}</div>
-    <div class="container" style="background: #f0bdff">footer</div>
+    <!-- header -->
+    {% block 'header' %} {% include 'header.html' %} {% endblock %}
+
+    <!-- navbar -->
+    {% block 'navbar' %} {% include 'navbar.html' %} {% endblock %}
+
+    <!-- Content -->
+    <div class="container mt-4">
+      {% block content %}
+      <!-- Aquí va el contenido  -->
+      {% endblock %}
+    </div>
+
+    <!-- footer -->
+    {% block 'footer' %} {% include 'footer.html' %} {% endblock %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
