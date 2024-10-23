@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from .models import Flan
 
 
 def index(request):
-    return render(request, "index.html")
+    flanes_publicos = Flan.objects.filter(is_private=False)
+    return render(request, "index.html", {"flanes": flanes_publicos})
 
 
 def about(request):
@@ -10,4 +12,5 @@ def about(request):
 
 
 def welcome(request):
-    return render(request, "welcome.html")
+    flanes_privados = Flan.objects.filter(is_private=True)
+    return render(request, "welcome.html", {"flanes": flanes_privados})
