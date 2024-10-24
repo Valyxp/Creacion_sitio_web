@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .models import Flan
+from django.http import HttpResponseRedirect
+from .forms import ContactFormForm
+from .models import ContactForm
 
 
 def index(request):
@@ -14,3 +17,25 @@ def about(request):
 def welcome(request):
     flanes_privados = Flan.objects.filter(is_private=True)
     return render(request, "welcome.html", {"flanes": flanes_privados})
+
+
+def contacto(request):
+    if request.method == "POST":
+        form = ContactFormForm(request.POST)
+        if form.is_valid():
+            # Crear un nuevo registro en la base de datos usando form.cleaned_data
+            ContactForm.objects.create(
+                customer_email=form.cleaned_data["customer_email"],
+                customer_name=form.cleaned_data["customer_name"],
+                message=form.cleaned_data["message"],
+            )
+            # Redirigir a la página de éxito tras el envío exitoso del formulario
+            return HttpResponseRedirect("/exito/")
+    else:
+        form = ContactFormForm()
+
+    return render(request, "contactus.html", {"form": form})
+
+
+def exito(request):
+    return render(request, "exito.html")
