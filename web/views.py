@@ -3,6 +3,7 @@ from .models import Flan
 from django.http import HttpResponseRedirect
 from .forms import ContactFormForm
 from .models import ContactForm
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -14,6 +15,7 @@ def about(request):
     return render(request, "about.html")
 
 
+@login_required
 def welcome(request):
     flanes_privados = Flan.objects.filter(is_private=True)
     return render(request, "welcome.html", {"flanes": flanes_privados})

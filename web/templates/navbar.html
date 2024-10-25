@@ -18,18 +18,40 @@
             <a class="nav-link" href="/">Inicio</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/contacto/">Contacto</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/acerca/">Acerca</a>
           </li>
+
+          {% if user.is_authenticated %}
+          <!-- Enlace a Bienvenido cuando el usuario está autenticado -->
           <li class="nav-item">
             <a class="nav-link" href="/bienvenido/">Bienvenido</a>
           </li>
+          <!-- Botón de Cerrar sesión dentro de un formulario separado -->
           <li class="nav-item">
-            <a class="nav-link" href="/contacto/">Contacto</a>
-            <!-- Nuevo enlace de contacto -->
+            <form
+              action="{% url 'logout' %}"
+              method="post"
+              style="display: inline"
+            >
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link nav-link">
+                Cerrar sesión
+              </button>
+            </form>
           </li>
+          {% else %}
+          <!-- Enlace para Iniciar sesión cuando el usuario no está autenticado -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
   </nav>
 </div>
+
 {% comment %} #fcff8f {% endcomment %}

@@ -1,0 +1,20 @@
+{% if user.is_authenticated %}
+<!-- Opción para Cerrar sesión -->
+<li class="nav-item">
+  <form action="{% url 'logout' %}" method="post" style="display: inline">
+    {% csrf_token %}
+    <button
+      type="submit"
+      class="btn btn-link nav-link"
+      style="padding: 0; border: none; color: inherit"
+    >
+      Cerrar sesión
+    </button>
+  </form>
+</li>
+{% else %}
+<!-- Opción para Iniciar sesión -->
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+</li>
+{% endif %}
