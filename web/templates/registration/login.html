@@ -1,9 +1,40 @@
-{% extends "base.html" %} {% block content %}
-<div class="container mt-5">
-  <h2>Iniciar Sesión</h2>
-  <form method="post">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-  </form>
+{% extends "base.html" %} {% block content %} {% load custom_filters %}
+
+<div class="container mt-5 mb-5">
+  <div
+    class="col-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4 bg-white p-4 rounded shadow"
+  >
+    <h3 class="text-center mb-4">Iniciar Sesión</h3>
+
+    <form method="post">
+      {% csrf_token %} {{ form.non_field_errors }}
+
+      <!-- Campo Usuario -->
+      <div class="mb-3">
+        <label for="{{ form.username.id_for_label }}" class="form-label">
+          {{ form.username.label_tag }}
+        </label>
+        <div>{{ form.username|add_class:"form-control" }}</div>
+        <div class="text-danger">{{ form.username.errors }}</div>
+      </div>
+
+      <!-- Campo Contraseña -->
+      <div class="mb-3">
+        <label for="{{ form.password.id_for_label }}" class="form-label">
+          {{ form.password.label_tag }}
+        </label>
+        <div>{{ form.password|add_class:"form-control" }}</div>
+        <div class="text-danger">{{ form.password.errors }}</div>
+      </div>
+
+      <!-- Botón Iniciar Sesión -->
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-4 py-2">
+          Iniciar Sesión
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
+
 {% endblock %}
