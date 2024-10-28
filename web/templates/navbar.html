@@ -12,24 +12,44 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contacto/">Contacto</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/acerca/">Acerca</a>
-          </li>
 
-          {% if user.is_authenticated %}
-          <!-- Enlace a Bienvenido cuando el usuario está autenticado -->
-          <li class="nav-item">
-            <a class="nav-link" href="/bienvenido/">Bienvenido</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Enlaces alineados a la izquierda -->
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item me-3">
+            <a
+              class="nav-link {% if request.path == '/' %}active{% endif %}"
+              href="/"
+              >Inicio</a
+            >
           </li>
-          <!-- Botón de Cerrar sesión dentro de un formulario separado -->
+          <li class="nav-item me-3">
+            <a
+              class="nav-link {% if request.path == '/contacto/' %}active{% endif %}"
+              href="/contacto/"
+              >Contacto</a
+            >
+          </li>
+          <li class="nav-item me-3">
+            <a
+              class="nav-link {% if request.path == '/acerca/' %}active{% endif %}"
+              href="/acerca/"
+              >Acerca</a
+            >
+          </li>
+        </ul>
+
+        <!-- Enlaces alineados a la derecha según estado de autenticación -->
+        <ul class="navbar-nav ms-auto">
+          {% if user.is_authenticated %}
+          <!-- Bienvenido y Cerrar sesión cuando el usuario está autenticado -->
+          <li class="nav-item me-3">
+            <a
+              class="nav-link {% if request.path == '/bienvenido/' %}active{% endif %}"
+              href="/bienvenido/"
+              >Bienvenido</a
+            >
+          </li>
           <li class="nav-item">
             <form
               action="{% url 'logout' %}"
@@ -45,7 +65,11 @@
           {% else %}
           <!-- Enlace para Iniciar sesión cuando el usuario no está autenticado -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+            <a
+              class="nav-link {% if request.path == '/login/' %}active{% endif %}"
+              href="{% url 'login' %}"
+              >Iniciar sesión</a
+            >
           </li>
           {% endif %}
         </ul>
@@ -53,5 +77,28 @@
     </div>
   </nav>
 </div>
+
+<!-- Estilos personalizados -->
+<style>
+  /* Estilo para el enlace activo */
+  .navbar-nav .nav-link.active {
+    color: #fff !important;
+    background-color: #007bff;
+    border-radius: 5px;
+  }
+
+  /* Agregar marco brillante al pasar el mouse */
+  .navbar-nav .nav-link:hover {
+    color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
+    border-radius: 5px;
+  }
+
+  /* Cambia el color del botón de cerrar sesión al pasar el mouse */
+  .btn-link:hover {
+    color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
+  }
+</style>
 
 {% comment %} #fcff8f {% endcomment %}

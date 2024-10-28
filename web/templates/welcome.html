@@ -1,21 +1,35 @@
 {% extends "base.html" %} {% block content %}
-<div class="container mt-5 mb-5">
-  <div class="row row-cols-1 row-cols-md-4 g-4">
-    {% for flan in flanes %}
-    <div class="col">
-      <div class="card h-100">
-        <img
-          src="{{ flan.image_url }}"
-          class="card-img-top"
-          alt="{{ flan.name }}"
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ flan.name }}</h5>
-          <p class="card-text">{{ flan.description }}</p>
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 fst-italic">Bienvenido usuario</h1>
+      <p class="lead my-3">
+        Tenemos una lista de productos exclusivos para ti, ¿Quieres conocer más?
+      </p>
+      <p class="lead mb-0">
+        <a href="/contacto/" class="text-white fw-bold">Contáctanos</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      {% for flan in flanes %}
+      <div class="col">
+        <div class="card h-100">
+          <img
+            src="{{ flan.image_url }}"
+            class="card-img-top"
+            alt="{{ flan.name }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ flan.name }}</h5>
+            <p class="card-text">{{ flan.description }}</p>
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
-{% endblock %}
+  {% endblock %}
+</main>
