@@ -1,17 +1,34 @@
 {% extends "base.html" %} {% block content %}
-<div class="container mt-5 mb-5">
-  <!-- Título principal -->
-  <div class="row">
-    <div class="col-12 text-center mb-4">
-      <h2 class="display-4">Acerca de OnlyFlans</h2>
-      <p class="lead text-muted">Flanes artesanales, creados con pasión</p>
+<div class="container-fluid p-0">
+  <!-- Imagen de fondo con título principal -->
+  <div
+    class="bg-image position-relative text-center text-white"
+    style="
+      background-image: url('https://www.valorpyme.cl/hubfs/recibe-apoyo-en-esta-etapa.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+    "
+  >
+    <div
+      class="overlay position-absolute w-100 h-100"
+      style="background-color: rgba(0, 0, 0, 0.5)"
+    ></div>
+    <div
+      class="container position-relative"
+      style="z-index: 1; padding-top: 20vh"
+    >
+      <h2 class="display-3 font-weight-bold">Acerca de OnlyFlans</h2>
+      <p class="lead text-light">Flanes artesanales, creados con pasión</p>
     </div>
   </div>
+</div>
 
+<div class="container mt-5 mb-5">
   <!-- Introducción sobre la PYME -->
   <div class="row">
-    <div class="col-12 col-md-8 offset-md-2">
-      <p class="text-center">
+    <div class="col-12 col-md-8 offset-md-2 text-center">
+      <p class="mt-4">
         <strong>OnlyFlans</strong> es una pequeña empresa familiar (PYME)
         dedicada a la creación y venta de flanes artesanales. Nuestra pasión por
         los postres y la tradición familiar nos ha llevado a perfeccionar
@@ -36,8 +53,7 @@
         En <strong>OnlyFlans</strong>, creemos en el valor de lo hecho a mano,
         en la dedicación de cada pequeño detalle, y en brindar un producto que
         no solo sea delicioso, sino que también traiga recuerdos y cree momentos
-        especiales. Nuestra empresa es sinónimo de calidad, cariño y
-        autenticidad, que se refleja en cada uno de nuestros flanes.
+        especiales.
       </p>
     </div>
   </div>
@@ -50,8 +66,7 @@
         Todos nuestros flanes son elaborados con ingredientes de primera
         calidad, sin conservantes ni colorantes artificiales. Nos enorgullece
         ofrecer un producto fresco y artesanal, con sabores que van desde lo
-        clásico hasta lo innovador. Cada flan es una obra de arte, pensada para
-        satisfacer los paladares más exigentes.
+        clásico hasta lo innovador.
       </p>
     </div>
   </div>
@@ -86,11 +101,9 @@
     <div class="col-12 col-md-8 offset-md-2">
       <p class="text-center">
         En <strong>OnlyFlans</strong>, queremos que cada bocado sea una
-        experiencia única. Estamos comprometidos con la satisfacción de nuestros
-        clientes y en ofrecer un postre que no solo cumpla, sino que supere sus
-        expectativas. ¡Gracias por confiar en nosotros y ser parte de esta dulce
-        aventura! ¡Explora nuestra <a href="/">tienda</a> y descubre tu flan
-        favorito hoy mismo!
+        experiencia única. ¡Gracias por confiar en nosotros y ser parte de esta
+        dulce aventura! ¡Explora nuestra <a href="/">tienda</a> y descubre tu
+        flan favorito hoy mismo!
       </p>
     </div>
   </div>

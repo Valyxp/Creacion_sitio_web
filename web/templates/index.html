@@ -1,17 +1,54 @@
 {% extends "base.html" %} {% block content %}
-<div class="container mt-5 mb-5">
-  <div class="row row-cols-1 row-cols-md-4 g-4">
+<div class="container-fluid p-0 mb-5">
+  <!-- Imagen de fondo con título principal -->
+  <div
+    class="bg-image position-relative text-center text-white"
+    style="
+      background-image: url('https://img.freepik.com/foto-gratis/plato-postre-gourmet-mousse-caramelo-crema-frutas-ai-generativa_188544-46296.jpg?t=st=1730127548~exp=1730131148~hmac=8bc1ce588b2886894dee487f44b7626d4cfc923271a5bb32f630fbd86a97b06c&w=996');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+    "
+  >
+    <div
+      class="overlay position-absolute w-100 h-100"
+      style="background-color: rgba(0, 0, 0, 0.5)"
+    ></div>
+    <div
+      class="container position-relative"
+      style="z-index: 1; padding-top: 20vh"
+    >
+      <h2 class="display-3 font-weight-bold">¡Descubre nuestros deliciosos flanes!</h2>
+      <p class="lead text-light">Explora nuestra variedad de sabores y disfruta de un postre irresistible.</p>
+    </div>
+  </div>
+</div>
+
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
     {% for flan in flanes %}
     <div class="col">
-      <div class="card h-100">
-        <img
-          src="{{ flan.image_url }}"
-          class="card-img-top"
-          alt="{{ flan.name }}"
-        />
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-img-top position-relative overflow-hidden">
+          <img
+            src="{{ flan.image_url }}"
+            class="img-fluid"
+            alt="{{ flan.name }}"
+          />
+        </div>
+
         <div class="card-body">
-          <h5 class="card-title">{{ flan.name }}</h5>
-          <p class="card-text">{{ flan.description }}</p>
+          <h5 class="card-title text-center text-#2d2e31 ">{{ flan.name }}</h5>
+          <p class="card-text text-muted">
+            {{ flan.description|truncatewords:20 }}
+          </p>
+        </div>
+
+        <div class="card-footer text-center bg-transparent border-top-0">
+          <a
+            href="{% url 'flan_detail' flan.id %}"
+            class="btn btn-outline-primary"
+            >Ver más</a
+          >
         </div>
       </div>
     </div>

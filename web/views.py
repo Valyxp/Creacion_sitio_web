@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from .forms import ContactFormForm
 from .models import ContactForm
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 
 def index(request):
@@ -41,3 +42,8 @@ def contacto(request):
 
 def exito(request):
     return render(request, "exito.html")
+
+
+def flan_detail(request, id):
+    flan = get_object_or_404(Flan, id=id)
+    return render(request, "flan_detail.html", {"flan": flan})
