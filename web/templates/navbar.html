@@ -37,8 +37,13 @@
               >Acerca</a
             >
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'testimonios' %}">Testimonios</a>
+            <a
+              class="nav-link {% if request.path == '/testimonios/' %}active{% endif %}"
+              href="{% url 'testimonios' %}"
+              >Testimonios</a
+            >
           </li>
         </ul>
 
