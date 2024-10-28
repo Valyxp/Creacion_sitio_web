@@ -33,7 +33,7 @@ def contacto(request):
                 customer_name=form.cleaned_data["customer_name"],
                 message=form.cleaned_data["message"],
             )
-            # Redirigir a la página de éxito tras el envío exitoso del formulario
+            # Redirige a la página de éxito tras el envío exitoso del formulario
             return HttpResponseRedirect("/exito/")
     else:
         form = ContactFormForm()
