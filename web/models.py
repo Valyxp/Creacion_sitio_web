@@ -24,3 +24,12 @@ class ContactForm(models.Model):
 
     def __str__(self):
         return self.customer_name
+
+
+class Testimonio(models.Model):
+    nombre_cliente = models.CharField(max_length=100)
+    texto_testimonio = models.TextField()
+    fecha_creacion = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Testimonio de {self.nombre_cliente}"

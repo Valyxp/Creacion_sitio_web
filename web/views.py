@@ -5,6 +5,7 @@ from .forms import ContactFormForm
 from .models import ContactForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from .models import Testimonio
 
 
 def index(request):
@@ -47,3 +48,8 @@ def exito(request):
 def flan_detail(request, id):
     flan = get_object_or_404(Flan, id=id)
     return render(request, "flan_detail.html", {"flan": flan})
+
+
+def testimonios(request):
+    lista_testimonios = Testimonio.objects.all()
+    return render(request, "testimonios.html", {"testimonios": lista_testimonios})
