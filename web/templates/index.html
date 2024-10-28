@@ -1,4 +1,7 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% load custom_filters %}
+<!-- Cargar el filtro personalizado -->
+
+{% block content %}
 <div class="container-fluid p-0 mb-5">
   <!-- Imagen de fondo con título principal -->
   <div
@@ -7,7 +10,7 @@
       background-image: url('https://img.freepik.com/foto-gratis/plato-postre-gourmet-mousse-caramelo-crema-frutas-ai-generativa_188544-46296.jpg?t=st=1730127548~exp=1730131148~hmac=8bc1ce588b2886894dee487f44b7626d4cfc923271a5bb32f630fbd86a97b06c&w=996');
       background-size: cover;
       background-position: center;
-      height: 100vh;
+      height: 80vh;
     "
   >
     <div
@@ -51,9 +54,16 @@
         </div>
 
         <div class="card-footer text-center bg-transparent border-top-0">
-          <a href="{% url 'flan_detail' flan.id %}" class="btn btn-outline-dark"
-            >Ver más</a
+          <!-- Aplicar filtro de formato en pesos chilenos -->
+          <p class="text-success fw-bold mb-2">
+            Precio: {{ flan.precio|clp_format }}
+          </p>
+          <a
+            href="{% url 'flan_detail' flan.id %}"
+            class="btn btn-outline-dark"
           >
+            Ver más
+          </a>
         </div>
       </div>
     </div>

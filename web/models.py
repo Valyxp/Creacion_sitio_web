@@ -9,6 +9,7 @@ class Flan(models.Model):
     image_url = models.URLField()
     slug = models.SlugField()
     is_private = models.BooleanField(default=False)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.name
