@@ -2,72 +2,156 @@
 <!-- filtro personalizado -->
 
 {% block content %}
-<div class="container-fluid p-0 mb-5">
-  <!-- Imagen de fondo con título principal -->
+<div class="container my-4">
+  <!-- Carousel de Bootstrap con efecto de fade  -->
   <div
-    class="bg-image position-relative text-center text-white"
-    style="
-      background-image: url('https://img.freepik.com/foto-gratis/plato-postre-gourmet-mousse-caramelo-crema-frutas-ai-generativa_188544-46296.jpg?t=st=1730127548~exp=1730131148~hmac=8bc1ce588b2886894dee487f44b7626d4cfc923271a5bb32f630fbd86a97b06c&w=996');
-      background-size: cover;
-      background-position: center;
-      height: 80vh;
-    "
+    id="carouselExampleFade"
+    class="carousel slide carousel-fade"
+    data-bs-ride="carousel"
   >
-    <div
-      class="overlay position-absolute w-100 h-100"
-      style="background-color: rgba(0, 0, 0, 0.5)"
-    ></div>
-    <div
-      class="container position-relative"
-      style="z-index: 1; padding-top: 20vh"
-    >
-      <h2 class="display-3 font-weight-bold">
-        ¡Descubre nuestros deliciosos flanes!
-      </h2>
-      <p class="lead text-light">
-        Explora nuestra variedad de sabores y disfruta de un postre
-        irresistible.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- Contenedor para las tarjetas de flanes -->
-<div class="container">
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
-    {% for flan in flanes %}
-    <div class="col">
-      <div class="card h-100 shadow-sm border-0">
-        <div class="card-img-top position-relative overflow-hidden">
-          <img
-            src="{{ flan.image_url }}"
-            class="img-fluid"
-            alt="{{ flan.name }}"
-          />
-        </div>
-
-        <div class="card-body">
-          <h5 class="card-title text-center text-dark">{{ flan.name }}</h5>
-          <p class="card-text text-muted">
-            {{ flan.description|truncatewords:20 }}
-          </p>
-        </div>
-
-        <div class="card-footer text-center bg-transparent border-top-0">
-          <!-- Aplicar filtro de formato en pesos chilenos -->
-          <p class="text-success fw-bold mb-2">
-            Precio: {{ flan.precio|clp_format }}
-          </p>
-          <a
-            href="{% url 'flan_detail' flan.id %}"
-            class="btn btn-outline-dark"
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="https://www.conasi.eu/blog/wp-content/uploads/2019/10/flan-castanas-des-1-900x563.jpg"
+          class="d-block w-100"
+          alt="Pumpkin Flan"
+          style="height: 400px; object-fit: cover"
+        />
+        <div class="carousel-caption d-md-block">
+          <h2
+            class="display-6"
+            style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8)"
           >
-            Ver más
-          </a>
+            Especiales del Mes
+          </h2>
+          <h5 style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7)">
+            Flan de Castañas
+          </h5>
+          <p style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7)">
+            Flan de textura cremosa, con una telaraña hecha con chocolate
+            blanco.
+          </p>
+          <a href="#flan-list" class="btn btn-dark mt-2">Ver más</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/5bff85572971146fb81d6d24/fa683518-ec4e-4a11-8216-98551ba7fc17/5Y2A6209.jpg?format=2500w"
+          class="d-block w-100"
+          alt="Flan de Chocolate"
+          style="height: 400px; object-fit: cover"
+        />
+        <div class="carousel-caption d-md-block">
+          <h2
+            class="display-6"
+            style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8)"
+          >
+            Especiales del Mes
+          </h2>
+          <h5 style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7)">
+            Pumpkin Flan XL
+          </h5>
+          <p style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7)">
+            Flan de calabaza con crema pastelera.
+          </p>
+          <a href="#flan-list" class="btn btn-dark mt-2">Ver más</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://i.pinimg.com/564x/00/de/a0/00dea0a56bad534c078854bc77449d7e.jpg"
+          class="d-block w-100"
+          alt="Flan de Caramelo"
+          style="height: 400px; object-fit: cover"
+        />
+        <div class="carousel-caption d-md-block">
+          <h2
+            class="display-6"
+            style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8)"
+          >
+            Especiales del Mes
+          </h2>
+          <h5 style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7)">
+            Pumpkin Chocoflan
+          </h5>
+          <p style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7)">
+            Flan con cobertura de caramelo y una base de bizcocho de chocolate.
+          </p>
+          <a href="#flan-list" class="btn btn-dark mt-2">Ver más</a>
         </div>
       </div>
     </div>
-    {% endfor %}
+
+    <!-- Botones de navegación sin marco ni fondo -->
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleFade"
+      data-bs-slide="prev"
+      style="width: auto; background: none; border: none"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleFade"
+      data-bs-slide="next"
+      style="width: auto; background: none; border: none"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
   </div>
+
+  <!-- Sección de Introducción -->
+  <div class="container text-center my-5">
+    <h2 class="display-5">Explora Nuestros Exquisitos Flanes</h2>
+    <p class="lead">
+      Descubre una gran variedad de sabores que tenemos para ti, cada uno
+      cuidadosamente elaborado.
+    </p>
+    <a href="#flan-list" class="btn btn-dark mt-3">Ver Todos los Flanes</a>
+  </div>
+
+  <!-- Contenedor para las tarjetas de flanes -->
+  <div id="flan-list" class="container">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
+      {% for flan in flanes %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-img-top position-relative overflow-hidden">
+            <img
+              src="{{ flan.image_url }}"
+              class="img-fluid"
+              alt="{{ flan.name }}"
+            />
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title text-center text-dark">{{ flan.name }}</h5>
+            <p class="card-text text-muted">
+              {{ flan.description|truncatewords:20 }}
+            </p>
+          </div>
+
+          <div class="card-footer text-center bg-transparent border-top-0">
+            <!-- Aplicar filtro de formato en pesos chilenos -->
+            <p class="text-success fw-bold mb-2">
+              Precio: {{ flan.precio|clp_format }}
+            </p>
+            <a
+              href="{% url 'flan_detail' flan.id %}"
+              class="btn btn-outline-dark"
+            >
+              Ver más
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endblock %}
 </div>
-{% endblock %}
